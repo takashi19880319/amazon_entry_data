@@ -1,6 +1,6 @@
 # mall_price_upadate.pl
 # author:T.Hashiguchi
-# date:2014/10/13
+# date:2014/10/17
 
 #========== 改訂履歴 ==========
 #
