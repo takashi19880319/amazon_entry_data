@@ -52,11 +52,13 @@ my $input_goods_spec_file_name="goods_spec.csv";
 my $input_goods_supp_file_name="goods_supp.csv";
 my $input_genre_goods_file_name="genre_goods.csv";
 my $input_category_amazon_file_name="category_amazon.csv";
+my $input_goods_keyword_file_name="goods_keyword.csv";
 my $sabun_file_find=0;
 my $goods_spec_file_find=0;
 my $goods_supp_file_find=0;
 my $genre_goods_file_find=0;
 my $category_amazon_file_find=0;
+my $goods_keyword_file_find=0;
 my $sabun_file_multi=0;
 while (my $current_dir_file_name = readdir(INPUT_DIR)){
 	if(index($current_dir_file_name, "sabun_", 0) == 0) {
@@ -86,6 +88,10 @@ while (my $current_dir_file_name = readdir(INPUT_DIR)){
 		$category_amazon_file_find=1;
 		next;
 	}
+	elsif($current_dir_file_name eq $input_goods_keyword_file_name) {
+		$goods_keyword_file_find=1;
+		next;
+	}
 }
 closedir(INPUT_DIR);
 if (!$sabun_file_find) {
@@ -107,6 +113,10 @@ if (!$genre_goods_file_find) {
 if (!$category_amazon_file_find) {
 	#goods_supp.csvファイルがカレントディレクトリに存在しない
 	&output_log("ERROR!! Not exist $input_category_amazon_file_name.\n");
+}
+if (!$goods_keyword_file_find) {
+	#goods_supp.csvファイルがカレントディレクトリに存在しない
+	&output_log("ERROR!! Not exist $input_goods_keyword_file_name.\n");
 }
 ####################
 ## 参照ファイルの存在チェック
@@ -167,6 +177,7 @@ my $input_goods_spec_csv = Text::CSV_XS->new({ binary => 1 });
 my $input_goods_supp_csv = Text::CSV_XS->new({ binary => 1 });
 my $input_genre_goods_csv = Text::CSV_XS->new({ binary => 1 });
 my $input_category_amazon_csv = Text::CSV_XS->new({ binary => 1 });
+my $input_goods_keyword_csv = Text::CSV_XS->new({ binary => 1 });
 #入力ファイルのオープン
 
 $sabun_file_name="$input_dir"."/"."$sabun_file_name";
@@ -202,6 +213,12 @@ $input_category_amazon_file_name="$input_dir"."/"."$input_category_amazon_file_n
 my $input_category_amazon_file_disc;
 if (!open $input_category_amazon_file_disc, "<", $input_category_amazon_file_name) {
 	&output_log("ERROR!!($!) $input_category_amazon_file_name open failed.");
+	exit 1;
+}
+$input_goods_keyword_file_name="$input_dir"."/"."$input_goods_keyword_file_name";
+my $input_goods_keyword_file_disc;
+if (!open $input_goods_keyword_file_disc, "<", $input_goods_keyword_file_name) {
+	&output_log("ERROR!!($!) $input_goods_keyword_file_name open failed.");
 	exit 1;
 }
 ####################
@@ -251,6 +268,8 @@ my $sex_flag = 0;
 my @global_entry_goods_spec_info=();
 # goods_supp.csvの情報をストックしたリスト
 my @global_entry_goods_supp_info=();
+# goods_keyword.csvの情報をストックしたリスト
+my @global_entry_goods_keyword_info=();
 # スペックの優先順位ルールの配列リストを作成
 my @globel_spec_sort=&get_spec_sort_from_xml();
 # 商品スペックを出力形式にした文字列のリスト
@@ -373,6 +392,42 @@ while($sabun_line = $input_sabun_csv->getline($input_sabun_file_disc)){
 			
 		}
 	}
+	# goods_keyword.csvからキーワードを格納
+	@global_entry_goods_keyword_info=();
+	my $goods_keyword_str="";
+	my $goods_keyword_str_temp="";
+	seek $input_goods_keyword_file_disc,0,0;
+	my $goods_keyword_line=$input_goods_keyword_csv->getline($input_goods_keyword_file_disc);
+	while($goods_keyword_line = $input_goods_keyword_csv->getline($input_goods_keyword_file_disc)){	
+		# 登録情報から商品コード読み出し
+		if ($global_entry_code_5 eq @$goods_keyword_line[0]) {
+			if(@$goods_keyword_line[1] =~ /$global_entry_code_5/){
+				next;
+			}
+			else{
+				# 50biteを超えるまでキーワード文字列を連結してキーワードを作成する
+				$goods_keyword_str_temp .= @$goods_keyword_line[1];
+				if(length($goods_keyword_str_temp) > 50){
+					# 50biteを超える
+					push(@global_entry_goods_keyword_info, $goods_keyword_str);
+					$goods_keyword_str = "";
+					# 超えた分のキーワードをtempに格納し、あらたにキーワードを格納する
+					$goods_keyword_str_temp = @$goods_keyword_line[1]." ";
+				}
+				else{
+					# 商品のスペック情報を保持する
+					$goods_keyword_str_temp .= " ";
+					$goods_keyword_str = $goods_keyword_str_temp;
+				}
+			}
+		}
+	}
+=pod
+	foreach my $str (@global_entry_goods_keyword_info){
+		print $str."\n";
+	}
+	exit;
+=cut
 	# 出力するスペック文字列を配列に格納
 	&get_output_spec_list;
 	# CSVにデータを主力
@@ -401,6 +456,7 @@ $input_goods_spec_csv->eof;
 $input_goods_supp_csv->eof;
 $input_genre_goods_csv->eof;
 $input_category_amazon_csv->eof;
+$input_goods_keyword_csv->eof;
 # 出力用CSVファイルモジュールの終了処理
 $output_amazon_entry_data_csv->eof;
 # 入力ファイルのクローズ
@@ -410,6 +466,7 @@ close $input_goods_spec_file_disc;
 close $input_goods_supp_file_disc;
 close $input_genre_goods_file_disc;
 close $input_category_amazon_file_disc;
+close $input_goods_keyword_file_disc;
 # 出力ファイルのクローズ
 close $output_amazon_entry_data_disc;
 close(LOG_FILE);
@@ -555,6 +612,18 @@ sub add_amazon_entry_data {
 	#推奨ブラウズノード1
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#検索キーワード1~5
+	for (my $i =0; $i<$#global_entry_goods_keyword_info; $i++) {
+		$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
+		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	}
+	if($#global_entry_goods_keyword_info < 5){
+		for (my $i =0; $i<5-$#global_entry_goods_keyword_info; $i++) {
+			$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+		}	
+	}
+=pod
 	#検索キーワード1
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
@@ -570,6 +639,7 @@ sub add_amazon_entry_data {
 	#検索キーワード5
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+=cut
 	#商品メイン画像URL
 	my $global_entry_code_7 = substr(@$sabun_line[0],0,7);
 	my $img_main_str ="http://glober.jp/img/amazon/1/".$global_entry_code_7."_1.jpg";
@@ -1244,6 +1314,14 @@ sub output_supp{
 	my $after_n="";
 	$info_supp =~ s/$before_n/$after_n/g;
 	return $info_supp;
+}
+
+#########################
+###  商品説明文を作成する ###
+#########################
+
+sub output_keyword {
+	
 }
 
 #####################
