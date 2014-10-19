@@ -53,12 +53,14 @@ my $input_goods_supp_file_name="goods_supp.csv";
 my $input_genre_goods_file_name="genre_goods.csv";
 my $input_category_amazon_file_name="category_amazon.csv";
 my $input_goods_keyword_file_name="goods_keyword.csv";
+my $input_browz_amazon_file_name="browz_amazon.csv";
 my $sabun_file_find=0;
 my $goods_spec_file_find=0;
 my $goods_supp_file_find=0;
 my $genre_goods_file_find=0;
 my $category_amazon_file_find=0;
 my $goods_keyword_file_find=0;
+my $amazon_browz_file_find=0;
 my $sabun_file_multi=0;
 while (my $current_dir_file_name = readdir(INPUT_DIR)){
 	if(index($current_dir_file_name, "sabun_", 0) == 0) {
@@ -92,6 +94,10 @@ while (my $current_dir_file_name = readdir(INPUT_DIR)){
 		$goods_keyword_file_find=1;
 		next;
 	}
+	elsif($current_dir_file_name eq $input_browz_amazon_file_name) {
+		$amazon_browz_file_find=1;
+		next;
+	}
 }
 closedir(INPUT_DIR);
 if (!$sabun_file_find) {
@@ -115,8 +121,12 @@ if (!$category_amazon_file_find) {
 	&output_log("ERROR!! Not exist $input_category_amazon_file_name.\n");
 }
 if (!$goods_keyword_file_find) {
-	#goods_supp.csvファイルがカレントディレクトリに存在しない
+	#goods_keyword.csvファイルがカレントディレクトリに存在しない
 	&output_log("ERROR!! Not exist $input_goods_keyword_file_name.\n");
+}
+if (!$amazon_browz_file_find) {
+	#browz_amazon.csvファイルがカレントディレクトリに存在しない
+	&output_log("ERROR!! Not exist $input_browz_amazon_file_name.\n");
 }
 ####################
 ## 参照ファイルの存在チェック
@@ -178,6 +188,7 @@ my $input_goods_supp_csv = Text::CSV_XS->new({ binary => 1 });
 my $input_genre_goods_csv = Text::CSV_XS->new({ binary => 1 });
 my $input_category_amazon_csv = Text::CSV_XS->new({ binary => 1 });
 my $input_goods_keyword_csv = Text::CSV_XS->new({ binary => 1 });
+my $input_browz_amazon_csv = Text::CSV_XS->new({ binary => 1 });
 #入力ファイルのオープン
 
 $sabun_file_name="$input_dir"."/"."$sabun_file_name";
@@ -219,6 +230,12 @@ $input_goods_keyword_file_name="$input_dir"."/"."$input_goods_keyword_file_name"
 my $input_goods_keyword_file_disc;
 if (!open $input_goods_keyword_file_disc, "<", $input_goods_keyword_file_name) {
 	&output_log("ERROR!!($!) $input_goods_keyword_file_name open failed.");
+	exit 1;
+}
+$input_browz_amazon_file_name="$input_dir"."/"."$input_browz_amazon_file_name";
+my $input_browz_amazon_file_disc;
+if (!open $input_browz_amazon_file_disc, "<", $input_browz_amazon_file_name) {
+	&output_log("ERROR!!($!) $input_browz_amazon_file_name open failed.");
 	exit 1;
 }
 ####################
@@ -422,12 +439,6 @@ while($sabun_line = $input_sabun_csv->getline($input_sabun_file_disc)){
 			}
 		}
 	}
-=pod
-	foreach my $str (@global_entry_goods_keyword_info){
-		print $str."\n";
-	}
-	exit;
-=cut
 	# 出力するスペック文字列を配列に格納
 	&get_output_spec_list;
 	# CSVにデータを主力
@@ -457,6 +468,7 @@ $input_goods_supp_csv->eof;
 $input_genre_goods_csv->eof;
 $input_category_amazon_csv->eof;
 $input_goods_keyword_csv->eof;
+$input_browz_amazon_csv->eof;
 # 出力用CSVファイルモジュールの終了処理
 $output_amazon_entry_data_csv->eof;
 # 入力ファイルのクローズ
@@ -467,6 +479,7 @@ close $input_goods_supp_file_disc;
 close $input_genre_goods_file_disc;
 close $input_category_amazon_file_disc;
 close $input_goods_keyword_file_disc;
+close $input_browz_amazon_file_disc;
 # 出力ファイルのクローズ
 close $output_amazon_entry_data_disc;
 close(LOG_FILE);
@@ -610,7 +623,9 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine(&output_supp()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#推奨ブラウズノード1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $str = &output_browz();
+	print $str."\n";
+	$output_amazon_entry_data_csv->combine($str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#検索キーワード1~5
 	for (my $i =0; $i<$#global_entry_goods_keyword_info; $i++) {
@@ -623,23 +638,6 @@ sub add_amazon_entry_data {
 			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 		}	
 	}
-=pod
-	#検索キーワード1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード2
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード3
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード4
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード5
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-=cut
 	#商品メイン画像URL
 	my $global_entry_code_7 = substr(@$sabun_line[0],0,7);
 	my $img_main_str ="http://glober.jp/img/amazon/1/".$global_entry_code_7."_1.jpg";
@@ -1317,13 +1315,34 @@ sub output_supp{
 }
 
 #########################
-###  商品説明文を作成する ###
+###  ブラウズノードを作成する ###
 #########################
 
-sub output_keyword {
-	
+sub output_browz {
+	my $info_browz ="";
+	seek $input_genre_goods_file_disc,0,0;
+	my $genre_goods_line=$input_genre_goods_csv->getline($input_genre_goods_file_disc);
+	while($genre_goods_line = $input_genre_goods_csv->getline($input_genre_goods_file_disc)){	
+		# 登録情報から商品コード読み出し
+		my $genre_code_5 = @$genre_goods_line[1];
+		if ($global_entry_code_5 == $genre_code_5) {
+			my $genre_code = @$genre_goods_line[0];
+			if(length($genre_code) == 4){
+				seek $input_browz_amazon_file_disc,0,0;
+				my $browz_amazon_line=$input_browz_amazon_csv->getline($input_browz_amazon_file_disc);
+				while($browz_amazon_line = $input_browz_amazon_csv->getline($input_browz_amazon_file_disc)){
+					my $browz_amazon_ref = @$browz_amazon_line[0];
+					if($genre_code == $browz_amazon_ref){
+						$info_browz = @$browz_amazon_line[2];
+						last;
+					}
+				}
+			last;
+			}
+		}
+	}
+	return $info_browz;
 }
-
 #####################
 ### ユーティリティ関数 ###
 #####################
