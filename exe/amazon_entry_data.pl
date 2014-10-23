@@ -624,7 +624,6 @@ sub add_amazon_entry_data {
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#推奨ブラウズノード1
 	my $str = &output_browz();
-	print $str."\n";
 	$output_amazon_entry_data_csv->combine($str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#検索キーワード1~5
@@ -1016,7 +1015,7 @@ sub output_name {
 	my $str ="【正規販売店】";
 	Encode::from_to( $str, 'utf8', 'shiftjis' );
 	if(length($global_entry_code) == 5){
-		$info_name = $global_entry_category.$global_entry_name." ".$str;
+		$info_name = $global_entry_category." ".$global_entry_name." ".$str;
 	}
 	else{
 		$info_name = $global_entry_category.$global_entry_name." ".$global_entry_color." ".$global_entry_size." ".$str;
