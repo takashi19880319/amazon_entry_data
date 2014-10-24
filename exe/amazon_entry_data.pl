@@ -563,7 +563,7 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine($global_entry_category) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#商品タイプ
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine(&output_goods_type()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#対象年齢・性別1
 	$output_amazon_entry_data_csv->combine(&output_sex()) or die $output_amazon_entry_data_csv->error_diag();
@@ -1022,6 +1022,34 @@ sub output_name {
 	}
 	$info_name =~ s/  / /g;
 	return $info_name;
+}
+
+#########################
+###  商品タイプ ###
+#########################
+
+sub output_goods_type {
+	my $info_type ="";
+	seek $input_genre_goods_file_disc,0,0;
+	my $genre_goods_line=$input_genre_goods_csv->getline($input_genre_goods_file_disc);
+	while($genre_goods_line = $input_genre_goods_csv->getline($input_genre_goods_file_disc)){	
+		# 登録情報から商品コード読み出し
+		my $genre_code_5 = @$genre_goods_line[1];
+		if ($global_entry_code_5 == $genre_code_5) {
+				my $genre_code = @$genre_goods_line[0];
+				seek $input_browz_amazon_file_disc,0,0;
+				my $browz_amazon_line=$input_browz_amazon_csv->getline($input_browz_amazon_file_disc);
+				while($browz_amazon_line = $input_browz_amazon_csv->getline($input_browz_amazon_file_disc)){
+					my $browz_amazon_ref = @$browz_amazon_line[0];
+					if($genre_code == $browz_amazon_ref){
+						$info_type = @$browz_amazon_line[3];
+						print $info_type."\n";
+						last;
+					}
+				}
+		}
+	}
+	return $info_type;
 }
 
 #########################
