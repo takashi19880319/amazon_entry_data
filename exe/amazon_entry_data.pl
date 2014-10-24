@@ -427,9 +427,9 @@ while($sabun_line = $input_sabun_csv->getline($input_sabun_file_disc)){
 				if(length($goods_keyword_str_temp) > 50){
 					# 50biteを超える
 					push(@global_entry_goods_keyword_info, $goods_keyword_str);
-					$goods_keyword_str = "";
 					# 超えた分のキーワードをtempに格納し、あらたにキーワードを格納する
 					$goods_keyword_str_temp = @$goods_keyword_line[1]." ";
+					$goods_keyword_str = $goods_keyword_str_temp;
 				}
 				else{
 					# 商品のスペック情報を保持する
@@ -627,15 +627,23 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine($str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#検索キーワード1~5
-	for (my $i =0; $i<$#global_entry_goods_keyword_info; $i++) {
-		$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
-		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	my $global_entry_goods_keyword_info = @global_entry_goods_keyword_info;
+	if($global_entry_goods_keyword_info>5){
+		for (my $i =0; $i<5; $i++) {
+			$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+		}
 	}
-	if($#global_entry_goods_keyword_info < 5){
-		for (my $i =0; $i<5-$#global_entry_goods_keyword_info; $i++) {
+	else{	
+		for (my $i =0; $i<$global_entry_goods_keyword_info; $i++) {
+			$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+			
+		}
+		for (my $i =0; $i<5-$global_entry_goods_keyword_info; $i++) {
 			$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-		}	
+		}
 	}
 	#商品メイン画像URL
 	my $global_entry_code_7 = substr(@$sabun_line[0],0,7);
@@ -1043,7 +1051,6 @@ sub output_goods_type {
 					my $browz_amazon_ref = @$browz_amazon_line[0];
 					if($genre_code == $browz_amazon_ref){
 						$info_type = @$browz_amazon_line[3];
-						print $info_type."\n";
 						last;
 					}
 				}
