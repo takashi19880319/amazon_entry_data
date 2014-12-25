@@ -1026,7 +1026,7 @@ sub output_name {
 		$info_name = $global_entry_category." ".$global_entry_name." ".$str;
 	}
 	else{
-		$info_name = $global_entry_category.$global_entry_name." ".$global_entry_color." ".$global_entry_size." ".$str;
+		$info_name = $global_entry_category." ".$global_entry_name." ".$global_entry_color." ".$global_entry_size." ".$str;
 	}
 	$info_name =~ s/  / /g;
 	return $info_name;
