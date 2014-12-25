@@ -1162,6 +1162,41 @@ sub output_supp{
 	my $info_str_after_2 ="";
 	$info_supp_str_1 =~ s/$info_str_before_2/$info_str_after_2/g;
 	$info_supp = $info_supp_str_1;
+	my $before_rep_str0="<ul class=\"link1\">.*<\/ul>";
+	my $after_rep_str0="";
+	$info_supp =~ s/$before_rep_str0/$after_rep_str0/g;
+	#　消費税増税バナーを削除
+	my $after_rep_str1="";
+	my $before_rep_str1="<br \/><br \/><p>.*<\/p>";	
+	$info_supp =~ s/$before_rep_str1/$after_rep_str1/g;	
+	#　<span class="itemComment">を削除
+	my $after_rep_str2="";
+	my $before_rep_str2="<span class=\"itemComment\">";
+	$info_supp =~ s/$before_rep_str2/$after_rep_str2/g;
+	#　</span>を削除
+	my $after_rep_str3="";
+	my $before_rep_str3="</span>";
+	$info_supp =~ s/$before_rep_str3/$after_rep_str3/g;
+	# フェリージのリンク変換
+	my $after_rep_str4="";
+	my $before_rep_str4="<br /><br /><a href=\"http://seal.*json.gif\"></a>";
+	$info_supp =~ s/$before_rep_str4/$after_rep_str4/g;
+	# フォックスのリンク変換
+	my $after_rep_str6="";
+	my $before_rep_str6="http://blog.glober.jp.*1526#repair";
+	$info_supp =~ s/$before_rep_str6/$after_rep_str6/;
+	# ジョンストンズのリンク削除
+	my $after_rep_str7="";
+	my $before_rep_str7="<br /><br />.*alt=\"johnstons\">";
+	$info_supp =~ s/$before_rep_str7/$after_rep_str7/g;
+	# 返品交換のリンク置換
+	my $after_rep_str8="セール商品は返品・交換対象外です。<br />詳しくは「返品・交換」のページをご参照下さい。<br /><br />";
+	my $before_rep_str8="<font color='red'>セール商品は返品.*</font></a><br /><br />";
+	$info_supp =~ s/$before_rep_str8/$after_rep_str8/g;
+	# クルチアーニの画像削除
+	my $after_rep_str9 ="";
+	my $before_rep_str9 = "<p><a href=\"http://blog.glober.jp/?cat=72\"><img.*</p><br />";
+	$info_supp =~ s/$before_rep_str9/$after_rep_str9/g;
 	if($info_supp_str_2 ne "") {
 		# 商品コメント2を取得
 		my $before_rep_str1="\n\n";
