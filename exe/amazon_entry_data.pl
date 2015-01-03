@@ -730,7 +730,9 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#スタイルキーワード1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $style_key1 ="アパレル";
+	Encode::from_to( $style_key1, 'utf8', 'shiftjis' );
+	$output_amazon_entry_data_csv->combine($style_key1) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#スタイルキーワード2
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
