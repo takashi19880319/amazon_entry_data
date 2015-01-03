@@ -804,6 +804,9 @@ sub add_amazon_entry_data {
 	my $parent_code="";
 	if (length($global_entry_code)==5){$parent_code = "";}
 	else{$parent_code = $global_entry_code_5;}
+	$output_amazon_entry_data_csv->combine($parent_code) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#親子関係のタイプ
 	my $variation_str="";
 	if (length($global_entry_code)==5){$variation_str = "";}
 	else{$variation_str ="Variation";}
