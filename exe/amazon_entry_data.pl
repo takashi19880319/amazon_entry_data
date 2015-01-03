@@ -723,7 +723,8 @@ sub add_amazon_entry_data {
 		}
 	}
 	#推奨ブラウズノード1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $str = &output_browz();
+	$output_amazon_entry_data_csv->combine($str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#推奨ブラウズノード2
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
