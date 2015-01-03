@@ -657,20 +657,51 @@ sub add_amazon_entry_data {
 	#配送重量
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品説明の箇条書き1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品説明の箇条書き2
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品説明の箇条書き3
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品説明の箇条書き4
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品説明の箇条書き1~5
+	# 出力するスペック項目を配列で取得する
+	my $specs_num = @specs;
+	my $specs_str_over5 ="";
+	# サイズのある商品
+	if(@$sabun_line[4] ne ""){
+		for (my $i=0; $i<$specs_num; $i++){
+			if($i==0){
+				$output_amazon_entry_data_csv->combine(&output_spec_size()) or die $output_amazon_entry_data_csv->error_diag();
+				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+				$output_amazon_entry_data_csv->combine($specs[$i]) or die $output_amazon_entry_data_csv->error_diag();
+				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+			}
+			# 4つめまでは単体で出力する
+			elsif($i<=2){
+				$output_amazon_entry_data_csv->combine($specs[$i]) or die $output_amazon_entry_data_csv->error_diag();
+				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+			}
+			# 5つめ以上はすべて連結して出力
+			elsif($i==3){
+				$specs_str_over5 = $specs[$i];
+			}
+			else{
+				$specs_str_over5 .= "/".$specs[$i];
+			}
+		}
+	}
+	#サイズのない商品
+	else{
+		for (my $i=0; $i<$specs_num; $i++){
+			if($i<=3){
+				$output_amazon_entry_data_csv->combine($specs[$i]) or die $output_amazon_entry_data_csv->error_diag();
+				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+			}
+			# 5つめ以上はすべて連結して出力
+			elsif($i==4){
+				$specs_str_over5 = $specs[$i];
+			}
+			else{
+				$specs_str_over5 .= "/".$specs[$i];
+			}
+		}
+	}
 	#商品説明の箇条書き5
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine($specs_str_over5) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#検索キーワード1
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
