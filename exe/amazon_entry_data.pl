@@ -804,20 +804,31 @@ sub add_amazon_entry_data {
 	my $parent_code="";
 	if (length($global_entry_code)==5){$parent_code = "";}
 	else{$parent_code = $global_entry_code_5;}
-	#親子関係のタイプ
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $variation_str="";
+	if (length($global_entry_code)==5){$variation_str = "";}
+	else{$variation_str ="Variation";}
+	$output_amazon_entry_data_csv->combine($variation_str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#バリエーションテーマ
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $var_str ="";
+	$global_entry_size=@$sabun_line[4];
+	if (!$global_entry_size){$var_str = "Color";}
+	else{$var_str = "Sizecolor";}
+	$output_amazon_entry_data_csv->combine($var_str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#サイズ
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	if (length($global_entry_code)==5){$global_entry_size = "";}
+	else{$global_entry_size=@$sabun_line[4];}
+	$output_amazon_entry_data_csv->combine($global_entry_size) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#サイズマップ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#カラー
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $color_str ="";
+	if (length($global_entry_code)==5){$color_str = "";}
+	else{$color_str = $global_entry_color;}
+	$output_amazon_entry_data_csv->combine($color_str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#カラーマップ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
