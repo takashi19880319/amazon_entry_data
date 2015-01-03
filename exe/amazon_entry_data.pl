@@ -615,12 +615,12 @@ sub add_amazon_entry_data {
 	#使用しない支払い方法
 	my $payment = "";
 	if(length($global_entry_code) == 9){ $payment = "exclude cvs";}
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine($payment) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#配送日時指定SKUリスト
 	my $skulist = "";
 	if(length($global_entry_code) == 9){ $skulist = "deliver_day";}
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine($skulist) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#セール価格
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
