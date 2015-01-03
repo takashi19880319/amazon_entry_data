@@ -894,10 +894,10 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#対象年齢・性別
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine(&output_sex()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#アダルト商品
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine("false") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#推奨最低身長の単位
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
