@@ -703,21 +703,25 @@ sub add_amazon_entry_data {
 	#商品説明の箇条書き5
 	$output_amazon_entry_data_csv->combine($specs_str_over5) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード2
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード3
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード4
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#検索キーワード5
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#検索キーワード1~5
+	my $global_entry_goods_keyword_info = @global_entry_goods_keyword_info;
+	if($global_entry_goods_keyword_info>5){
+		for (my $i =0; $i<5; $i++) {
+			$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+		}
+	}
+	else{	
+		for (my $i =0; $i<$global_entry_goods_keyword_info; $i++) {
+			$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+			
+		}
+		for (my $i =0; $i<5-$global_entry_goods_keyword_info; $i++) {
+			$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+		}
+	}
 	#推奨ブラウズノード1
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
