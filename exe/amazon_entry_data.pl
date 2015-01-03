@@ -795,11 +795,15 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#親子関係の指定
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $relation ="";
+	if(length($global_entry_code) == 5){ $relation = "parent";}
+	else{ $relation = "child";}
+	$output_amazon_entry_data_csv->combine($relation) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#親商品のSKU(商品管理番号)
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	my $parent_code="";
+	if (length($global_entry_code)==5){$parent_code = "";}
+	else{$parent_code = $global_entry_code_5;}
 	#親子関係のタイプ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
