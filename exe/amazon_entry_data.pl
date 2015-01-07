@@ -491,7 +491,7 @@ sub add_amazon_entry_data_name {
 	#amazon仕様1
 	my $amazon_str_1 ="TemplateType=Clothing";
 	#amazon仕様2
-	my $amazon_str_2 ="Version=2012.0530";
+	my $amazon_str_2 ="Version=2014.0219";
 	#amazon仕様3
 	my $amazon_str_3 ="この行はAmazonが使用しますので変更や削除しないでください。";
 	my @csv_amazon_entry_data_name_1=($amazon_str_1,$amazon_str_2,$amazon_str_3);
@@ -554,10 +554,10 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine(&output_name()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#商品コード(JANコード等)
-	$output_amazon_entry_data_csv->combine($global_entry_code) or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#商品コードのタイプ
-	$output_amazon_entry_data_csv->combine("EAN") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#ブランド名
 	$output_amazon_entry_data_csv->combine($global_entry_category) or die $output_amazon_entry_data_csv->error_diag();
@@ -566,7 +566,9 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine(&output_goods_type()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#メーカー型番
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	my $maker_code = "";
+	if(length($global_entry_code) == 9){ $maker_code = reverse $global_entry_code;}
+	$output_amazon_entry_data_csv->combine($maker_code) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#商品説明文
 	$output_amazon_entry_data_csv->combine(&output_supp()) or die $output_amazon_entry_data_csv->error_diag();
