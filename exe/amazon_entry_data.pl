@@ -1,6 +1,6 @@
-# mall_price_upadate.pl
+﻿# mall_price_upadate.pl
 # author:T.Hashiguchi
-# date:2014/10/18
+# date:2014/12/20
 
 #========== 改訂履歴 ==========
 #
@@ -491,7 +491,7 @@ sub add_amazon_entry_data_name {
 	#amazon仕様1
 	my $amazon_str_1 ="TemplateType=Clothing";
 	#amazon仕様2
-	my $amazon_str_2 ="Version=2012.0530";
+	my $amazon_str_2 ="Version=2014.0219";
 	#amazon仕様3
 	my $amazon_str_3 ="この行はAmazonが使用しますので変更や削除しないでください。";
 	my @csv_amazon_entry_data_name_1=($amazon_str_1,$amazon_str_2,$amazon_str_3);
@@ -509,7 +509,7 @@ sub add_amazon_entry_data_name {
 		}
 		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), $post_fix_str;
 	}
-	my @csv_amazon_entry_data_name_2=("商品管理番号","商品名","商品コード(JANコード等)","商品コードのタイプ","ブランド名","商品タイプ","対象年齢・性別1","スタイルキーワード1","商品説明の箇条書き1","商品説明の箇条書き2","商品説明の箇条書き3","商品説明の箇条書き4","商品説明の箇条書き5","商品説明文","推奨ブラウズノード1","検索キーワード1","検索キーワード2","検索キーワード3","検索キーワード4","検索キーワード5","商品メイン画像URL","在庫数","リードタイム(出荷までにかかる作業日数)","商品のコンディション","商品のコンディション説明","商品の販売価格","通貨コード","サイズ","サイズマップ","カラー","カラーマップ","スタイル名","靴の幅","ヒールの高さの単位","ヒールの高さ","ストラップのタイプ","つま先の形状(トゥシェープ)","ウエストのスタイル","素材不透明度","ヒールのタイプ","シャフト(軸)の丈","表地素材","シャフト(軸)の直径","ライフスタイル1","袖のタイプ","留め具のタイプ","留め具のタイプ","親子指定","親商品のSKU(商品管理番号)","親子関係のタイプ","バリエーションテーマ","推奨ブラウズノード2","ライフスタイル2","ライフスタイル3","ライフスタイル4","ライフスタイル5","素材または繊維1","対象年齢・性別2","スタイルキーワード2","スタイルキーワード3","スタイルキーワード4","スタイルキーワード5","アダルト商品","推奨最低身長の単位","推奨最低身長","推奨最高身長の単位","推奨最高身長","商品パッケージの長さの単位","商品パッケージの長さ","商品パッケージの幅","商品パッケージの高さ","ウエストサイズの単位","ウエストサイズ","仕立ての長さの単位","仕立ての長さ","袖の長さの単位","袖の長さ","シャツカラースタイル","首のタイプ","首のサイズの単位","首のサイズ","ボトムススタイル","胸囲サイズの単位","胸囲サイズ","カップサイズ","振袖の長さの単位","振袖の長さ","振袖の幅の単位","振袖の幅","帯の長さの単位","帯の長さ","帯の幅の単位","帯の幅","付け帯の幅の単位","付け帯の幅","付け帯の高さの単位","付け帯の高さ","枕サイズ","枕サイズの単位","カラーサンプル画像URL","商品のサブ画像URL1","商品のサブ画像URL2","商品のサブ画像URL3","商品のサブ画像URL4","商品のサブ画像URL5","商品のサブ画像URL6","商品のサブ画像URL7","商品のサブ画像URL8","配送重量の単位","配送重量","商品パッケージの重量の単位","商品パッケージの重量","商品の公開日","予約商品の販売開始日","メーカー希望小売価格","使用しない支払い方法","セール価格","セール開始日","セール終了日","フルフィルメントセンターID","商品の入荷予定日","モデル年(発売年・発表年)","シーズン","最大注文個数","最大同梱可能個数","ギフトメッセージ","ギフト包装","メーカー製造中止","商品コードなしの理由","プラチナキーワード1","プラチナキーワード2","プラチナキーワード3","プラチナキーワード4","プラチナキーワード5","コート・ワンピース・チュニック着丈","アップデート・削除");
+	my @csv_amazon_entry_data_name_2=("商品管理番号","商品名","商品コード(JANコード等)","商品コードのタイプ","ブランド名","商品タイプ","メーカー型番","商品説明文","アップデート・削除","在庫数","リードタイム(出荷までにかかる作業日数)","商品のコンディション","商品のコンディション説明","商品の販売価格","通貨コード","商品の公開日","予約商品の販売開始日","メーカー希望価格","使用しない支払い方法","配送日時指定SKUリスト","セール価格","セール開始日","セール終了日","商品の入荷予定日","最大注文個数","ギフトメッセージ","ギフト包装","メーカー製造中止","商品コードなしの理由","配送重量の単位","配送重量","商品説明の箇条書き1","商品説明の箇条書き2","商品説明の箇条書き3","商品説明の箇条書き4","商品説明の箇条書き5","検索キーワード1","検索キーワード2","検索キーワード3","検索キーワード4","検索キーワード5","推奨ブラウズノード1","推奨ブラウズノード2","スタイルキーワード1","スタイルキーワード2","スタイルキーワード3","スタイルキーワード4","スタイルキーワード5","プラチナキーワード1","プラチナキーワード2","プラチナキーワード3","プラチナキーワード4","プラチナキーワード5","コート・ワンピース・チュニック着丈","商品メイン画像URL","カラーサンプル画像URL","商品のサブ画像URL1","商品のサブ画像URL2","商品のサブ画像URL3","商品のサブ画像URL4","商品のサブ画像URL5","商品のサブ画像URL6","商品のサブ画像URL7","商品のサブ画像URL8","フルフィルメントセンターID","商品パッケージの長さ","商品パッケージの幅","商品パッケージの高さ","商品パッケージの長さの単位","商品パッケージの重量","商品パッケージの重量の単位","親子関係の指定","親商品のSKU(商品管理番号)","親子関係のタイプ","バリエーションテーマ","サイズ","サイズマップ","カラー","カラーマップ","スタイル名","靴の幅","ヒールの高さの単位","ヒールの高さ","ストラップのタイプ","つま先の形状(トゥシェープ)","ウエストのスタイル","素材不透明度","ヒールのタイプ","シャフト(軸)の丈","表地素材","シャフト(軸)の直径","袖のタイプ","留め具のタイプ","ライフスタイル1","ライフスタイル2","ライフスタイル3","ライフスタイル4","ライフスタイル5","素材または繊維","対象年齢・性別","アダルト商品","推奨最低身長の単位","推奨最低身長","推奨最高身長の単位","推奨最高身長","ウエストサイズの単位","ウエストサイズ","仕立ての長さの単位","仕立ての長さ","袖の長さの単位","袖の長さ","シャツカラースタイル","首のタイプ","首のサイズの単位","首のサイズ","ボトムススタイル","胸囲サイズの単位","胸囲サイズ","カップサイズ","振袖の長さの単位","振袖の長さ","振袖の幅の単位","振袖の幅","帯の長さの単位","帯の長さ","帯の幅の単位","帯の幅","付け帯の幅の単位","付け帯の幅","付け帯の高さの単位","付け帯の高さ","枕サイズ","枕サイズの単位","モデル年(発売年・発表年)","シーズン","収納可能サイズ");
 	my $csv_amazon_entry_data_name_2_num=@csv_amazon_entry_data_name_2;
 	my $csv_amazon_entry_count_2=0;
 	for my $csv_amazon_entry_name_2_str (@csv_amazon_entry_data_name_2) {
@@ -524,7 +524,7 @@ sub add_amazon_entry_data_name {
 		}
 		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), $post_fix_str;
 	}
-	my @csv_amazon_entry_data_name_3=("sku","product-name","product-id","product-id-type","brand","clothing-type","department1","style-keyword1","bullet-point1","bullet-point2","bullet-point3","bullet-point4","bullet-point5","product-description","recommended-browse-node1","search-terms1","search-terms2","search-terms3","search-terms4","search-terms5","main-image-url","quantity","leadtime-to-ship","condition-type","condition-note","item-price","currency","size","size-map","color","color-map","style-name","shoe-width","heel-height-unit-of-measure","heel-height","strap-type","toe-shape","waist-style","material-opacity","heel-type","shaft-height","outer-material","shaft-diameter","occasion-lifestyle1","sleeve-type","apparel-closure-type","shoe-closure-type","parent-child","parent-sku","relationship-type","variation-theme","recommended-browse-node2","occasion-lifestyle2","occasion-lifestyle3","occasion-lifestyle4","occasion-lifestyle5","fabric-type","department2","style-keyword2","style-keyword3","style-keyword4","style-keyword5","is-adult-product","minimum-height-recommended-unit-of-measure","minimum-height-recommended","maximum-height-recommended-unit-of-measure","maximum-height-recommended","package-length-unit-of-measure","package-length","package-width","package-height","waist-size-unit-of-measure","waist-size","inseam-length-unit-of-measure","inseam-length","sleeve-length-unit-of-measure","sleeve-length","collar-style","neck-style","neck-size-unit-of-measure","neck-size","bottom-style","chest-size-unit-of-measure","chest-size","cup-size","furisode-length-unit-of-measure","furisode-length","furisode-width-unit-of-measure","furisode-width","obi-length-unit-of-measure","obi-length","obi-width-unit-of-measure","obi-width","tsukeobi-width-unit-of-measure","tsukeobi-width","tsukeobi-height-unit-of-measure","tsukeobi-height","pillow-size","pillow-size-unit-of-measure","swatch-image-url","other-image-url1","other-image-url2","other-image-url3","other-image-url4","other-image-url5","other-image-url6","other-image-url7","other-image-url8","shipping-weight-unit-measure","shipping-weight","package-weight-unit-of-measure","package-weight","launch-date","release-date","msrp","optional-payment-type-exclusion","sale-price","sale-from-date","sale-through-date","fulfillment-center-id","restock-date","model-year","season","max-order-quantity","max-aggregate-ship-quantity","is-gift-message-available","is-gift-wrap-available","is-discontinued-by-manufacturer","registered-parameter","platinum-keywords1","platinum-keywords2","platinum-keywords3","platinum-keywords4","platinum-keywords5","specific-uses-keywords","update-delete");
+	my @csv_amazon_entry_data_name_3=("item_sku","item_name","external_product_id","external_product_id_type","brand_name","product_subtype","part_number","product_description","update_delete","quantity","fulfillment_latency","condition_type","condition_note","standard_price","currency","product_site_launch_date","merchant_release_date","list_price","optional_payment_type_exclusion","delivery_schedule_group_id","sale_price","sale_from_date","sale_end_date","restock_date","max_order_quantity","offering_can_be_gift_messaged","offering_can_be_giftwrapped","is_discontinued_by_manufacturer","missing_keyset_reason","website_shipping_weight_unit_of_measure","website_shipping_weight","bullet_point1","bullet_point2","bullet_point3","bullet_point4","bullet_point5","generic_keywords1","generic_keywords2","generic_keywords3","generic_keywords4","generic_keywords5","recommended_browse_nodes1","recommended_browse_nodes2","style_keywords1","style_keywords2","style_keywords3","style_keywords4","style_keywords5","platinum_keywords1","platinum_keywords2","platinum_keywords3","platinum_keywords4","platinum_keywords5","specific_uses_keywords","main_image_url","swatch_image_url","other_image_url1","other_image_url2","other_image_url3","other_image_url4","other_image_url5","other_image_url6","other_image_url7","other_image_url8","fulfillment_center_id","package_length","package_width","package_height","package_length_unit_of_measure","package_weight","package_weight_unit_of_measure","parent_child","parent_sku","relationship_type","variation_theme","size_name","size_map","color_name","color_map","style_name","shoe_width","heel_height_unit_of_measure","heel_height","strap_type","toe_shape","waist_style","opacity","heel_type","shaft_height","outer_material_type","shaft_diameter","sleeve_type","closure_type","lifestyle1","lifestyle2","lifestyle3","lifestyle4","lifestyle5","fabric_type","department_name","is_adult_product","minimum_height_recommendation_unit_of_measure","minimum_height_recommendation","maximum_height_recommendation_unit_of_measure","maximum_height_recommendation","waist_size_unit_of_measure","waist_size","inseam_length_unit_of_measure","inseam_length","sleeve_length_unit_of_measure","sleeve_length","collar_style","neck_style","neck_size_unit_of_measure","neck_size","bottom_style","chest_size_unit_of_measure","chest_size","cup_size","furisode_length_unit_of_measure","furisode_length","furisode_width_unit_of_measure","furisode_width","obi_length_unit_of_measure","obi_length","obi_width_unit_of_measure","obi_width","tsukeobi_width_unit_of_measure","tsukeobi_width","tsukeobi_height_unit_of_measure","tsukeobi_height","pillow_size","pillow_size_unit_of_measure","model_year","seasons","fit_to_size_description");
 	my $csv_amazon_entry_data_name_3_num=@csv_amazon_entry_data_name_3;
 	my $csv_amazon_entry_count_3=0;
 	for my $csv_amazon_entry_name_3_str (@csv_amazon_entry_data_name_3) {
@@ -565,18 +565,105 @@ sub add_amazon_entry_data {
 	#商品タイプ
 	$output_amazon_entry_data_csv->combine(&output_goods_type()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#対象年齢・性別1
-	$output_amazon_entry_data_csv->combine(&output_sex()) or die $output_amazon_entry_data_csv->error_diag();
+	#メーカー型番
+	my $maker_code = "";
+	if(length($global_entry_code) == 9){ $maker_code = reverse $global_entry_code;}
+	$output_amazon_entry_data_csv->combine($maker_code) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#スタイルキーワード1
-	my $style_keyword ="アパレル";
-	Encode::from_to( $style_keyword, 'utf8', 'shiftjis' );
-	$output_amazon_entry_data_csv->combine($style_keyword) or die $output_amazon_entry_data_csv->error_diag();
+	#商品説明文
+	$output_amazon_entry_data_csv->combine(&output_supp()) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#アップデート・削除
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#在庫数
+	my $quatity = "";
+	if(length($global_entry_code) == 9){$quatity = 0;}
+	$output_amazon_entry_data_csv->combine($quatity) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#リードタイム(出荷までにかかる作業日数)
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品のコンディション
+	my $condition = "";
+	if(length($global_entry_code) == 9){$condition = "New";}
+	$output_amazon_entry_data_csv->combine($condition) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品のコンディション説明
+	my $condition_supp = "";
+	if(length($global_entry_code) == 9){$condition_supp = "新品";}
+	Encode::from_to( $condition_supp, 'utf8', 'shiftjis' );
+	$output_amazon_entry_data_csv->combine($condition_supp) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品の販売価格
+	my $standart_price = "";
+	if(length($global_entry_code) == 9){ $standart_price = @$sabun_line[3];}
+	$output_amazon_entry_data_csv->combine($standart_price) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#通貨コード
+	my $currency = "";
+	if(length($global_entry_code) == 9){ $currency = "JPY";}
+	$output_amazon_entry_data_csv->combine($currency) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品の公開日
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#予約商品の販売開始日
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#メーカー希望価格
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#使用しない支払い方法
+	my $payment = "";
+	if(length($global_entry_code) == 9){ $payment = "exclude cvs";}
+	$output_amazon_entry_data_csv->combine($payment) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#配送日時指定SKUリスト
+	my $skulist = "";
+	if(length($global_entry_code) == 9){ $skulist = "deliver_day";}
+	$output_amazon_entry_data_csv->combine($skulist) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#セール価格
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#セール開始日
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#セール終了日
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品の入荷予定日
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#最大注文個数
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#ギフトメッセージ
+	my $gift_message ="false";
+	$output_amazon_entry_data_csv->combine($gift_message) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#ギフト包装
+	my $gift_package ="false";
+	$output_amazon_entry_data_csv->combine($gift_package) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#メーカー製造中止
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品コードなしの理由
+	$output_amazon_entry_data_csv->combine("PrivateLabel") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#配送重量の単位
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#配送重量
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#商品説明の箇条書き1~5
 	# 出力するスペック項目を配列で取得する
 	my $specs_num = @specs;
 	my $specs_str_over5 ="";
+	my $specs_cnt =0;
 	# サイズのある商品
 	if(@$sabun_line[4] ne ""){
 		for (my $i=0; $i<$specs_num; $i++){
@@ -585,18 +672,22 @@ sub add_amazon_entry_data {
 				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 				$output_amazon_entry_data_csv->combine($specs[$i]) or die $output_amazon_entry_data_csv->error_diag();
 				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+				$specs_cnt+=2;
 			}
 			# 4つめまでは単体で出力する
 			elsif($i<=2){
 				$output_amazon_entry_data_csv->combine($specs[$i]) or die $output_amazon_entry_data_csv->error_diag();
 				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+				$specs_cnt++;
 			}
 			# 5つめ以上はすべて連結して出力
 			elsif($i==3){
 				$specs_str_over5 = $specs[$i];
+				$specs_cnt++;
 			}
 			else{
 				$specs_str_over5 .= "/".$specs[$i];
+				$specs_cnt++;
 			}
 		}
 	}
@@ -606,29 +697,33 @@ sub add_amazon_entry_data {
 			if($i<=3){
 				$output_amazon_entry_data_csv->combine($specs[$i]) or die $output_amazon_entry_data_csv->error_diag();
 				print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+				$specs_cnt++;
 			}
 			# 5つめ以上はすべて連結して出力
 			elsif($i==4){
 				$specs_str_over5 = $specs[$i];
+				$specs_cnt++;
 			}
 			else{
 				$specs_str_over5 .= "/".$specs[$i];
+				$specs_cnt++;
 			}
 		}
 	}
 	#商品説明の箇条書き5
-	$output_amazon_entry_data_csv->combine($specs_str_over5) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品説明文
-	$output_amazon_entry_data_csv->combine(&output_supp()) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#推奨ブラウズノード1
-	my $str = &output_browz();
-	$output_amazon_entry_data_csv->combine($str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	if($specs_cnt<=4){
+		for (my $i=0; $i<5-$specs_cnt; $i++){
+			$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+		}
+	}
+	else{
+		$output_amazon_entry_data_csv->combine($specs_str_over5) or die $output_amazon_entry_data_csv->error_diag();
+		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	}
 	#検索キーワード1~5
 	my $global_entry_goods_keyword_info = @global_entry_goods_keyword_info;
-	if($global_entry_goods_keyword_info>5){
+	if($global_entry_goods_keyword_info>=5){
 		for (my $i =0; $i<5; $i++) {
 			$output_amazon_entry_data_csv->combine($global_entry_goods_keyword_info[$i]) or die $output_amazon_entry_data_csv->error_diag();
 			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
@@ -640,43 +735,110 @@ sub add_amazon_entry_data {
 			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 			
 		}
-		for (my $i =0; $i<5-$global_entry_goods_keyword_info; $i++) {
+		my $rest_num = 5-$global_entry_goods_keyword_info;
+		for (my $i =0; $i<$rest_num; $i++) {
 			$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 			print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 		}
 	}
+	#推奨ブラウズノード1
+	my $str = &output_browz();
+	$output_amazon_entry_data_csv->combine($str) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#推奨ブラウズノード2
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#スタイルキーワード1
+	my $style_key1 ="アパレル";
+	Encode::from_to( $style_key1, 'utf8', 'shiftjis' );
+	$output_amazon_entry_data_csv->combine($style_key1) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#スタイルキーワード2
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#スタイルキーワード3
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#スタイルキーワード4
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#スタイルキーワード5
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#プラチナキーワード1
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#プラチナキーワード2
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#プラチナキーワード3
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#プラチナキーワード4
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#プラチナキーワード5
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#コート・ワンピース・チュニック着丈
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#商品メイン画像URL
 	my $global_entry_code_7 = substr(@$sabun_line[0],0,7);
 	my $img_main_str ="http://glober.jp/img/amazon/1/".$global_entry_code_7."_1.jpg";
 	$output_amazon_entry_data_csv->combine($img_main_str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#在庫数
-	my $quantity =0;
-	if (length($global_entry_code)==5){$quantity = "";}
-	$output_amazon_entry_data_csv->combine($quantity) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#リードタイム(出荷までにかかる作業日数)
+		my $img_str ="";
+	for (my $i =1; $i<=9; $i++){
+		my $img_str ="http://glober.jp/img/amazon/".$i."/".$global_entry_code_7."_".$i.".jpg";
+		$output_amazon_entry_data_csv->combine($img_str) or die $output_amazon_entry_data_csv->error_diag();
+		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	}
+	#フルフィルメントセンターID
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品のコンディション
-	my $condition_str="";
-	if (length($global_entry_code)==5){$condition_str = "";}
-	else{$condition_str ="New";}
-	$output_amazon_entry_data_csv->combine($condition_str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品のコンディション説明
+	#商品パッケージの長さ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品の販売価格
-	if (length($global_entry_code)==5){$global_entry_price = "";}
-	else{$global_entry_price =@$sabun_line[3];}
-	$output_amazon_entry_data_csv->combine($global_entry_price) or die $output_amazon_entry_data_csv->error_diag();
+	#商品パッケージの幅
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#通貨コード
-	my $currency_code="";
-	if (length($global_entry_code)==5){$currency_code = "";}
-	else{$currency_code ="JPY";}
-	$output_amazon_entry_data_csv->combine($currency_code) or die $output_amazon_entry_data_csv->error_diag();
+	#商品パッケージの高さ
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品パッケージの長さの単位
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品パッケージの重量
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#商品パッケージの重量の単位
+	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#親子関係の指定
+	my $relation ="";
+	if(length($global_entry_code) == 5){ $relation = "parent";}
+	else{ $relation = "child";}
+	$output_amazon_entry_data_csv->combine($relation) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#親商品のSKU(商品管理番号)
+	my $parent_code="";
+	if (length($global_entry_code)==5){$parent_code = "";}
+	else{$parent_code = $global_entry_code_5;}
+	$output_amazon_entry_data_csv->combine($parent_code) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#親子関係のタイプ
+	my $variation_str="";
+	if (length($global_entry_code)==5){$variation_str = "";}
+	else{$variation_str ="Variation";}
+	$output_amazon_entry_data_csv->combine($variation_str) or die $output_amazon_entry_data_csv->error_diag();
+	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
+	#バリエーションテーマ
+	my $var_str ="";
+	$global_entry_size=@$sabun_line[4];
+	if (!$global_entry_size){$var_str = "Color";}
+	else{$var_str = "Sizecolor";}
+	$output_amazon_entry_data_csv->combine($var_str) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#サイズ
 	if (length($global_entry_code)==5){$global_entry_size = "";}
@@ -731,44 +893,13 @@ sub add_amazon_entry_data {
 	#シャフト(軸)の直径
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#ライフスタイル1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#袖のタイプ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#留め具のタイプ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#留め具のタイプ
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#親子指定
-	my $identify_p_c_str="";
-	if (length($global_entry_code)==5){$identify_p_c_str = "parent";}
-	else{$identify_p_c_str ="child";}
-	$output_amazon_entry_data_csv->combine($identify_p_c_str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#親商品のSKU(商品管理番号)
-	my $parent_code="";
-	if (length($global_entry_code)==5){$parent_code = "";}
-	else{$parent_code = $global_entry_code_5;}
-	$output_amazon_entry_data_csv->combine($parent_code) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#親子関係のタイプ
-	my $variation_str="";
-	if (length($global_entry_code)==5){$variation_str = "";}
-	else{$variation_str ="Variation";}
-	$output_amazon_entry_data_csv->combine($variation_str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#バリエーションテーマ
-	my $var_str ="";
-	$global_entry_size=@$sabun_line[4];
-	if (!$global_entry_size){$var_str = "Color";}
-	else{$var_str = "Sizecolor";}
-	$output_amazon_entry_data_csv->combine($var_str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#推奨ブラウズノード2
+	#ライフスタイル1
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#ライフスタイル2
@@ -783,26 +914,14 @@ sub add_amazon_entry_data {
 	#ライフスタイル5
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#素材または繊維1
+	#素材または繊維
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#対象年齢・性別2
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#スタイルキーワード2
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#スタイルキーワード3
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#スタイルキーワード4
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#スタイルキーワード5
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	#対象年齢・性別
+	$output_amazon_entry_data_csv->combine(&output_sex()) or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#アダルト商品
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
+	$output_amazon_entry_data_csv->combine("false") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#推奨最低身長の単位
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
@@ -814,18 +933,6 @@ sub add_amazon_entry_data {
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#推奨最高身長
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品パッケージの長さの単位
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品パッケージの長さ
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品パッケージの幅
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品パッケージの高さ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#ウエストサイズの単位
@@ -912,98 +1019,13 @@ sub add_amazon_entry_data {
 	#枕サイズの単位
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#カラーサンプル画像URL~商品のサブ画像URL8
-	my $img_str ="";
-	for (my $i =1; $i<=9; $i++){
-		my $img_str ="http://glober.jp/img/amazon/".$i."/".$global_entry_code_7."_".$i.".jpg";
-		$output_amazon_entry_data_csv->combine($img_str) or die $output_amazon_entry_data_csv->error_diag();
-		print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	}
-	#配送重量の単位
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#配送重量
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品パッケージの重量の単位
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品パッケージの重量
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品の公開日
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#予約商品の販売開始日
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#メーカー希望小売価格
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#使用しない支払い方法
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#セール価格
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#セール開始日
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#セール終了日
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#フルフィルメントセンターID
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品の入荷予定日
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#モデル年(発売年・発表年)
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
 	#シーズン
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#最大注文個数
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#最大同梱可能個数
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#ギフトメッセージ
-	my $gift_str="false";
-	$output_amazon_entry_data_csv->combine($gift_str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#ギフト包装
-	my $gift_package_str="false";
-	$output_amazon_entry_data_csv->combine($gift_package_str) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#メーカー製造中止
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#商品コードなしの理由
-	my $product_reason ="PrivateLabel";
-	$output_amazon_entry_data_csv->combine($product_reason) or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#プラチナキーワード1
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#プラチナキーワード2
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#プラチナキーワード3
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#プラチナキーワード4
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#プラチナキーワード5
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#コート・ワンピース・チュニック着丈
-	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
-	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), ",";
-	#アップデート・削除
+	#収納可能サイズ
 	$output_amazon_entry_data_csv->combine("") or die $output_amazon_entry_data_csv->error_diag();
 	#最後に改行を追加
 	print $output_amazon_entry_data_disc $output_amazon_entry_data_csv->string(), "\n";
